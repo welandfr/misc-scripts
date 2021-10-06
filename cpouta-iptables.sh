@@ -14,7 +14,7 @@
 sudo -s
 
 # Install iptables-persistent
-apt update -y && apt install iptables-persistent nmap -y
+apt update -y && apt install iptables-persistent -y
 
 # Enable ip forwarding
 sysctl net.ipv4.ip_forward=1
