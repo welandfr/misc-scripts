@@ -3,7 +3,7 @@
 ####
 #
 # Script to enable ssh port forwarding on cPouta projects.
-# Run after build on a machine with a Floating IP.
+# Run (or just copy-paste to the console) after build on a machine with a Floating IP.
 # Fredrik Welander 2021
 #
 # iptables -t nat -L # list nat rules
