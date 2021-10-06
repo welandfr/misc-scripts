@@ -13,9 +13,6 @@
 # Run as root
 sudo -s
 
-# Install iptables-persistent
-apt update -y && apt install iptables-persistent -y
-
 # Enable ip forwarding
 sysctl net.ipv4.ip_forward=1
 # Make persistent
@@ -118,6 +115,9 @@ iptables -t nat -A PREROUTING -p tcp --dport 2299 -j DNAT --to-destination 192.1
 
 # Masquerade, note exclude loopback, otherwis nslookup will stop working
 iptables ! -o lo -t nat -A POSTROUTING -j MASQUERADE 
+
+# Install iptables-persistent
+apt update -y && apt install iptables-persistent -y
 
 # Make iptables rules persistent
 iptables-save > /etc/iptables/rules.v4
