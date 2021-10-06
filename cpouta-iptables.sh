@@ -117,10 +117,14 @@ iptables -t nat -A PREROUTING -p tcp --dport 2299 -j DNAT --to-destination 192.1
 iptables ! -o lo -t nat -A POSTROUTING -j MASQUERADE 
 
 # Install iptables-persistent
-DEBIAN_FRONTEND=noninteractive
-apt-get update -y && apt-get install iptables-persistent -y
+apt-get update -y && DEBIAN_FRONTEND=noninteractive apt-get install iptables-persistent -y
 
 # Make iptables rules persistent
 iptables-save > /etc/iptables/rules.v4
+
+# Print out the rules
+cat /etc/iptables/rules.v4
+ 
+
 
 
