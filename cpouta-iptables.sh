@@ -22,6 +22,16 @@ sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
 iptables -t nat -F
 
 # Add port forwarding for ssh, connect to lan hosts on e.g. port 2210 to reach 192.168.1.10
+# Use leading zero in the port number for single digits, e.g. 2205 for 192.168.1.5
+iptables -t nat -A PREROUTING -p tcp --dport 2201 -j DNAT --to-destination 192.168.1.1:22
+iptables -t nat -A PREROUTING -p tcp --dport 2202 -j DNAT --to-destination 192.168.1.2:22
+iptables -t nat -A PREROUTING -p tcp --dport 2203 -j DNAT --to-destination 192.168.1.3:22
+iptables -t nat -A PREROUTING -p tcp --dport 2204 -j DNAT --to-destination 192.168.1.4:22
+iptables -t nat -A PREROUTING -p tcp --dport 2205 -j DNAT --to-destination 192.168.1.5:22
+iptables -t nat -A PREROUTING -p tcp --dport 2206 -j DNAT --to-destination 192.168.1.6:22
+iptables -t nat -A PREROUTING -p tcp --dport 2207 -j DNAT --to-destination 192.168.1.7:22
+iptables -t nat -A PREROUTING -p tcp --dport 2208 -j DNAT --to-destination 192.168.1.8:22
+iptables -t nat -A PREROUTING -p tcp --dport 2209 -j DNAT --to-destination 192.168.1.9:22
 iptables -t nat -A PREROUTING -p tcp --dport 2210 -j DNAT --to-destination 192.168.1.10:22
 iptables -t nat -A PREROUTING -p tcp --dport 2211 -j DNAT --to-destination 192.168.1.11:22
 iptables -t nat -A PREROUTING -p tcp --dport 2212 -j DNAT --to-destination 192.168.1.12:22
